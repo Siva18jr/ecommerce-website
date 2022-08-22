@@ -16,11 +16,12 @@ if(isset($_POST['update_product'])){
     
     $id = $_POST['id'];
     $name = $_POST['name'];
+    $types = $_POST['types'];
     $des = $_POST['des'];
     $price = $_POST['price'];
     $image = $_FILES['image']['name'];
     
-    mysqli_query($conn, "UPDATE `products` SET description='$des',price = '$price',name = '$name' WHERE id = '$id'") or die('query failed');
+    mysqli_query($conn, "UPDATE `products` SET types = '$types', description='$des',price = '$price',name = '$name' WHERE id = '$id'") or die('query failed');
     
     if(!empty($image)){
         
@@ -37,8 +38,6 @@ if(isset($_GET['delete'])){
     $delete_id = $_GET['delete'];
 
     mysqli_query($conn, "DELETE FROM products WHERE id = '$delete_id'");
-    
-   //  mysqli_query($conn, "DELETE products, agent_payment FROM products INNER JOIN agent_payment ON products.name = agent_payment.name WHERE products.id = '$delete_id'") or die('query failed');
     
     header('location:agent_view_products.php');
 
@@ -68,6 +67,7 @@ if(isset($_GET['delete'])){
       <thead>
          <th>image</th>
          <th>product name</th>
+         <th>type</th>
          <th>price</th>
          <th>description</th>
          <th id="remove">action</th>
@@ -87,6 +87,7 @@ if(isset($_GET['delete'])){
          <tr>
             <td><img src="img/<?php echo $row['image']; ?>" height="100" alt=""></td>
             <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['types']; ?></td>
             <td>₹<?php echo $row['price']; ?>/-</td>
             <td><?php echo $row['description']; ?></td>
             <td id="remove">
@@ -133,6 +134,7 @@ if(isset($_GET['delete'])){
       <input type="hidden" name="image" value="<?php echo $row['image']; ?>">
       <img src="img/<?php echo $row['image']; ?>" alt="">
       <input type="text" name="name" value="<?php echo $row['name']; ?>" class="box" required placeholder="enter product name">
+      <input type="text" name="types" value="<?php echo $row['types']; ?>" class="box" required placeholder="enter product type">
       <input type="text" name="des" value="<?php echo $row['description']; ?>" class="box">
       <input type="text" name="price" value="<?php echo $row['price']; ?>" min="0" class="box" required placeholder="enter product price">
       <input type="file" class="box" name="image" accept="img/jpg, img/jpeg, img/png">
