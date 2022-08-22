@@ -30,8 +30,17 @@ include 'add_to_cart.php';
 <h1 class="heading"> <span></span>
 <br>
 <section class="products">
-    <h1 class="heading"> all <span> products</span></h1>
-    <h3 class="heading1">---(Products)---</h3>
+    <h1 class="heading">
+        <section class="product_theme">
+        <a href="product_type.php?types=Laptop">laptop</a>
+        <a href="product_type.php?types=Mobile">mobile</a>
+        <a href="product_type.php?types=Ipad">ipad</a>
+        <a href="product_type.php?types=Tablet">tablet</a>
+</section>
+<br>
+    <section class="products">
+    <h1 class="heading"> ALL <span> products</span></h1>
+    <h3 class="heading1"></h3>
     <div class="box-container">
       <?php
 
