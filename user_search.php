@@ -42,7 +42,7 @@ include 'add_to_cart.php';
         
         $search_prod = $_POST['search'];
         
-        $res = mysqli_query($conn, "SELECT * FROM `products` WHERE name LIKE '%{$search_prod}%' OR agent_name LIKE '%{$search_prod}%'") or die('query failed');
+        $res = mysqli_query($conn, "SELECT * FROM `products` WHERE name LIKE '%{$search_prod}%' OR types LIKE '%{$search_prod}%'") or die('query failed');
         
         if(mysqli_num_rows($res) > 0){
             
