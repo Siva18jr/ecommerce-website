@@ -107,11 +107,12 @@ CREATE TABLE `orders` (
 CREATE TABLE `products` (
   `id` int(100) NOT NULL,
   `user_id` int(100) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `agent_name` varchar(100) NOT NULL,
-  `price` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `agent_name` varchar(20) NOT NULL,
+  `types` varchar(20) NOT NULL,
+  `price` varchar(10) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `description` varchar(100) NOT NULL,
+  `description` varchar(255) NOT NULL,
   `placed_on` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
