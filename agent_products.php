@@ -17,11 +17,11 @@ if(isset($_POST['add_product'])){
   $name = $_POST['name'];
   $agent_name = $_POST['agent_name'];
   $price = $_POST['price'];
+   $types = $_POST['types'];
   $des = $_POST['des'];
   $image = $_FILES['image']['name'];
   $date = date('Y-m-d');
   $i = 100;
-//   $total = $price - $i;
   $name = $_POST['name'];
 
     $item_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'") or die('query failed');
@@ -36,7 +36,7 @@ if(isset($_POST['add_product'])){
         
         if(mysqli_num_rows($query) > 0){
             
-            $res = mysqli_query($conn, "INSERT INTO `products`(id,user_id, name, agent_name, price, image, description,placed_on) VALUES('','$agent_id','$name', '$agent_name', '$price', '$image', '$des','$date')");
+            $res = mysqli_query($conn, "INSERT INTO `products`(id,user_id, name, agent_name, types, price, image, description,placed_on) VALUES('','$agent_id','$name', '$agent_name', '$types', '$price', '$image', '$des','$date')");
             
             if($res){
                 
@@ -77,6 +77,7 @@ if(isset($_POST['add_product'])){
       <input type="text" name="name" class="box" placeholder="enter product name" >
       <input type="text" name="agent_name" class="box" placeholder="enter agent name" >
       <input type="number" min="0" name="price" class="box" placeholder="enter price" >
+     <input type="text" name="types" class="box" placeholder="enter product type" >
       <input type="file" name="image" accept="img/jpg, img/jpeg, img/png" class="box" >
       <input type="text" name="des" class="box" placeholder="enter description" >
       <input type="submit" value="add product" name="add_product" class="btn">
