@@ -17,11 +17,12 @@ if(isset($_POST['update_product'])){
     $id = $_POST['id'];
     $name = $_POST['name'];
     $agent_name = $_POST['agent_name'];
+    $types = $_POST['types'];
     $des = $_POST['des'];
     $price = $_POST['price'];
     $image = $_FILES['image']['name'];
     
-    mysqli_query($conn, "UPDATE `products` SET name = '$name', agent_name='$agent_name', image = '$image', price = '$price', description='$des' WHERE id = '$id'") or die('query failed');
+    mysqli_query($conn, "UPDATE `products` SET name = '$name', agent_name='$agent_name', types = '$types', image = '$image', price = '$price', description='$des' WHERE id = '$id'") or die('query failed');
     
     if(!empty($image)){
         
@@ -83,6 +84,7 @@ include 'admin_header.php';
          <th>image</th>
          <th>product name</th>
          <th>agent name</th>
+          <th>type</th>
          <th>price</th>
          <th>description</th>
          <th>placed on</th>
@@ -103,6 +105,7 @@ include 'admin_header.php';
             <td><img src="img/<?php echo $row['image']; ?>" height="100" alt=""></td>
             <td><?php echo $row['name']; ?></td>
             <td><?php echo $row['agent_name']; ?></td>
+             <td><?php echo $row['types']; ?></td>
             <td>₹<?php echo $row['price']; ?>/-</td>
             <td><?php echo $row['description']; ?></td>
             <td><?php echo $row['placed_on']; ?></td>
@@ -153,6 +156,7 @@ include 'admin_header.php';
       <img src="img/<?php echo $row['image']; ?>" alt="">
       <input type="text" name="name" value="<?php echo $row['name']; ?>" class="box" required placeholder="enter product name">
       <input type="text" name="agent_name" value="<?php echo $row['agent_name']; ?>" class="box" required placeholder="enter artist name">
+       <input type="text" name="types" value="<?php echo $row['types']; ?>" class="box" required placeholder="enter product type">
       <input type="text" name="des" value="<?php echo $row['description']; ?>" class="box">
       <input type="number" name="price" value="<?php echo $row['price']; ?>" min="0" class="box" required placeholder="enter product price">
       <input type="file" class="box" name="image" accept="img/jpg, img/jpeg, img/png">
