@@ -80,6 +80,6 @@ if(isset($_GET['delete'])){
    </table>
 </section>
 <center><button onclick="window.print()" class="btnn">print report</button></center>
-<script src="js/script.js"></script>
+<script src="js/admin.js"></script>
 </body>
 </html>
