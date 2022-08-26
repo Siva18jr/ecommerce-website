@@ -45,6 +45,9 @@ if(isset($_GET['delete_all'])){
    <title>cart</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
    <link rel="stylesheet" href="user.css">
+   <script src = "js/jquery-3.2.1.min.js"></script>
+   <script src = "js/bootstrap.js"></script>
+   <script src = "js/user.js"></script>
 </head>
 
 <body style="background-color: black">
@@ -100,15 +103,45 @@ if(isset($_GET['delete_all'])){
       
       <tr class="table-bottom">
          <td><a href="user_products.php" class="option-btn" style="margin-top: 0;">continue shopping</a></td>
-         <td colspan="3">grand total</td>
+         <td><a href="user_orders.php" class="btn <?php echo ($grand_total > 1)?'':'disabled'; ?>">proceed to checkout</a></td>
+         
+         <td colspan="2">GRAND TOTAL</td>
+         
          <td>₹<?php echo $grand_total; ?>/-</td>
+         
          <td><a href="user_cart.php?delete_all" onclick="return confirm('are you sure you want to delete all?');" class="remove-btn"> <i class="fas fa-trash"></i> delete all </a></td>
+      </tr>
+      
+      <tr>
+         <td><a href="user_products.php" class="option-btn" style="margin-top: 0;">continue shopping</a></td>
+         
+         <td>
+            <div class="form-group">
+                  <input class="form-control" type="text" id="coupon" placeholder = "enter coupon code here" oninput= "Coupon()" />
+                  <input type="hidden" value="<?php echo $grand_total ?>" id="price"/>
+               <div id="result"></div>
+               
+               <br style="clear:both;"/>
+			   </div>
+			
+         </td>
+      
+         <td colspan = "2">
+            <div class="form-group">
+				   <label>TOTAL AMOUNT (with discount)</label>
+         </td>
+               
+         <td>₹
+            <input class="form-control" type="number" value="<?php $grand_total ?>" id="total" readonly="readonly" lang="en-150"/>
+			   </div>
+         </td>
+   <td>
+      <button class="btn btn-success" onclick="Total()">final payment</button>
+         </td>
       </tr>
       </tbody>
    </table>
-   <center><a href="user_orders.php" class="btn <?php echo ($grand_total > 1)?'':'disabled'; ?>">proceed to checkout&#8594;</a>
 </section>
 </div>
-<script src = "js/user.js"></script>
 </body>
 </html>
