@@ -27,15 +27,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `coupon`
 --
 
-CREATE TABLE `cart` (
-  `c_id` int(11) NOT NULL,
-  `p_id` int(30) NOT NULL,
-  `user_id` int(30) NOT NULL,
-  `price` varchar(10) NOT NULL,
-  `quantity` int(10) NOT NULL,
-  `image` varchar(60) NOT NULL,
-  `total_price` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `coupon` (
+  `coupon_id` int(11) NOT NULL,
+  `coupon_code` varchar(20) NOT NULL,
+  `discount` int(10) NOT NULL,
+  `status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Table structure for table `agent_payment`
