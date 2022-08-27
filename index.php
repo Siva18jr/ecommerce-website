@@ -3,6 +3,7 @@
 require 'connection.php';
 
 session_start();
+
 $user_id = $_SESSION['user_id'];
 
 if(!isset($user_id)){
@@ -24,25 +25,62 @@ include 'add_to_cart.php';
     <title>Data</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="admin_dashboard.css">
+    <link rel="stylesheet" type="text/css" href="admin.css" />
 </head>
 
 <body style="color:#fff"> 
 
 <?php include 'user_header.php'; ?>
+
 <section class="home" id="home">
-   <center><video src="img/art-at-home-desktop.mp4" width="90%" id="video" autoplay muted loop></video></center><br>
    <div class="content">
     </div>
 </section>
-<!-- <section class="products">
-<h1 class="heading"> our <span>Products</span> <a href="#all"><span>&#8594;</a></span></h1>
-<div class="box-container">
-   
-</div>
-<div class="load-more" style="margin-top: 2rem; text-align:center">
-   <a href="user_products.php" class="btnn">Load more</a>
-</div>
-</section> -->
-<script src="js/script.js"></script>
+
+<section class="dashboard">
+  
+  <h1 class="title" >TODAY COUPONS </h1><br>
+  
+  <div class="box-container">
+    
+    <?php
+    
+    $res = mysqli_query($conn,"SELECT coupon_code, discount FROM coupon");
+    
+    if(mysqli_num_rows($res)>0){
+      
+      $i = 1;
+      
+      while($row = mysqli_fetch_assoc($res)){
+  
+    ?>
+    
+    <div class = "box">
+      
+      <p><?php echo 'UPTO'.'<br>'.$row['discount'].'%'.' OFF ' ?></span></p>
+          
+      <input type="text" name="coupon_code" value="<?php echo $row['coupon_code']; ?>" id = "myInput_<?= $i ?>" class="box" readonly style = "color:green;" >
+
+
+    </div>
+    
+    <?php
+    
+    $i++;
+      
+      }
+        
+    }else{
+      
+      echo "no coupons";
+    
+    }
+    
+    ?>
+    
+  </div>
+  </section>
+<script src="js/user.js"></script>
 </body>
 </html>
