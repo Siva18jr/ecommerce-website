@@ -30,6 +30,8 @@ if(isset($_POST['send'])){
         mysqli_query($conn, "INSERT INTO `message`(user_id, name, email, number, message,placed_on) VALUES('$user_id', '$name', '$email', '$number', '$msg','$date')") or die('query failed');
         
         $message[] = 'message sent successfully!';
+        
+        echo '<script>alert("your feedback sent successfully!")</script>';
    
     }
 }
