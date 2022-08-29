@@ -55,6 +55,8 @@ if(isset($_POST['order_btn'])){
             
             $message[] = 'order placed successfully!';
             
+            echo '<script>alert("order placed successfully!")</script>';
+            
             mysqli_query($conn, "DELETE FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
         
         }
