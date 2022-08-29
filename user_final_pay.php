@@ -30,7 +30,6 @@ if(isset($_POST['order_btn'])){
             
             $cart_items[] = $row1['name'].' ('.$row1['quantity'].') ';
             $total = $row1['total_price'];
-            // $total = ($row1['price'] * $row1['quantity']);
             $final_total += $total;
         
         }
@@ -55,6 +54,8 @@ if(isset($_POST['order_btn'])){
             mysqli_query($conn, "INSERT INTO `orders`(user_id,name, number, email, method, address, total_products, total_price, placed_on) VALUES('$user_id', '$name', '$number', '$email', '$method', '$address', '$total_products', '$final_total', '$placed_on')") or die('query failed');
             
             $message[] = 'order placed successfully!';
+            
+            echo '<script>alert("order placed successfully!")</script>';
             
             mysqli_query($conn, "DELETE FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
         
