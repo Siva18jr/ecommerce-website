@@ -137,8 +137,8 @@ if(isset($_GET['delete'])){
     <form action="generate_coupon.php" method="post" enctype="multipart/form-data">
       
       <input type="hidden" name="coupon_id" value="<?php echo $row['coupon_id']; ?>">
-      <input type="text" name="coupon_code" value="<?php echo $row['coupon_code']; ?>" class="box" required placeholder="enter product name">
-      <input type="text" name="discount" value="<?php echo $row['discount']; ?>" class="box" required placeholder="enter product type">
+      <input type="text" name="coupon_code" value="<?php echo $row['coupon_code']; ?>" class="box" required placeholder="enter coupon code">
+      <input type="text" name="discount" value="<?php echo $row['discount']; ?>" class="box" required placeholder="enter discount">
       <button type="submit" name="update_coupon" class="btn"><i class="fas fa-edit"></i> update</button>
       <button type="reset" class="delete-btn"><a href="generate_coupon.php"><i class="fa fa-times"></i>cancel</a></button>
    </form>
