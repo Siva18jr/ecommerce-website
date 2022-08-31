@@ -169,4 +169,7 @@ if(isset($_POST['order_btn'])){
 </section>
 <script src="js/user.js"></script>
 </body>
+    <footer>
+<?php include 'footer.html' ; ?>
+</footer>
 </html>
