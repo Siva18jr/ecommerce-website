@@ -67,4 +67,7 @@ if(!isset($user_id)){
 </section>
 <script src="js/user.js"></script>
 </body>
+<footer>
+<?php include 'footer.html' ; ?>
+</footer>
 </html>
