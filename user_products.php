@@ -63,6 +63,10 @@ include 'add_to_cart.php';
 
 </div>
 </section>
-<script src = "js/user.js"></script>
+<script src = "js/product.js"></script>
 </body>
+    <footer>
+<p class="pagetop"><a href="#"><i class="fas fa-angle-double-up"></i></a></p>
+<?php include 'footer.html' ; ?>
+</footer>
 </html>
