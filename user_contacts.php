@@ -77,4 +77,7 @@ if(isset($_POST['send'])){
 </section>
 <script src = "js/user.js"></script>
 </body>
+<footer>
+<?php include 'footer.html' ; ?>
+</footer>
 </html>
