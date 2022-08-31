@@ -83,4 +83,7 @@ include 'add_to_cart.php';
   </section>
 <script src="js/user.js"></script>
 </body>
+<footer>
+<?php include 'footer.html' ; ?>
+</footer>
 </html>
