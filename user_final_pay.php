@@ -56,6 +56,8 @@ if(isset($_POST['order_btn'])){
             $message[] = 'order placed successfully!';
             
             echo '<script>alert("order placed successfully!")</script>';
+            
+            header('location:user_dispay.php');
         
         }
     }
@@ -85,7 +87,7 @@ if(isset($_POST['order_btn'])){
     while($row3 = mysqli_fetch_assoc($result3)){
         
         $total_price = $row3['total_price'];
-        $final_price += $total_price;
+        $final_price = $total_price;
         
     ?>
 
