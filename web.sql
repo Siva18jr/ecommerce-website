@@ -24,6 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `card_number` int(15) NOT NULL,
+  `total_price` int(10) NOT NULL,
+  `staus` varchar(20) NOT NULL,
+  `method` varchar(20) NOT NULL,
+  `paid_on` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
 -- Table structure for table `coupon`
 --
 
