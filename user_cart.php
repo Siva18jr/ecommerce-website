@@ -136,7 +136,7 @@ if(isset($_GET['delete_all'])){
 			   </div>
          </td>
    <td>
-      <button class="btn btn-success" onclick="Total()">final payment</button>
+      <button class="btn btn-success" onclick="Total()">procced to checkout</button>
          </td>
       </tr>
       </tbody>
