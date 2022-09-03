@@ -17,7 +17,7 @@ if(isset($_POST['order_btn'])){
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $number = $_POST['number'];
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $method = mysqli_real_escape_string($conn, $_POST['method']);
+//     $method = mysqli_real_escape_string($conn, $_POST['method']);
     $address = mysqli_real_escape_string($conn, 'flat no. '. $_POST['flat'].', '. $_POST['street'].', '. $_POST['city'].', '. $_POST['country'].' - '. $_POST['pin_code']);
     $placed_on = date('Y-m-d');
     $final_total = 0;
@@ -57,7 +57,7 @@ if(isset($_POST['order_btn'])){
             
             echo '<script>alert("order placed successfully!")</script>';
             
-            mysqli_query($conn, "DELETE FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
+//             mysqli_query($conn, "DELETE FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
         
         }
     }
@@ -125,12 +125,12 @@ if(isset($_POST['order_btn'])){
             <span>your email :</span>
             <input type="email" name="email" required placeholder="enter your email">
          </div>
-         <div class="inputBox">
+<!--          <div class="inputBox">
             <span>payment method :</span>
             <select name="method">
                <option value="cash on delivery">cash on delivery</option>
             </select>
-         </div>
+         </div> -->
          <div class="inputBox">
             <span>Flat/House No :</span>
             <input type="number" min="0" name="flat" required placeholder="e.g. flat no/house no.">
