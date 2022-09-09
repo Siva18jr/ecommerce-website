@@ -231,7 +231,10 @@ if(isset($_POST['order_btn'])){
             <input type="number" min="0" name="pin_code" required placeholder="e.g. 123456">
          </div>
       </div>
-      <center><input type="submit" value="order now" class="btn" name="order_btn"></center>
+      <center>
+	      <a href="user_cart.php" class="remove-btn" >Back</a>
+	      <input type="submit" value="order now" class="btn" name="order_btn">
+     </center>
    </form>
 </section>
 <script src="js/user.js"></script>
