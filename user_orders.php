@@ -70,6 +70,33 @@ if(isset($_POST['order_btn'])){
    <title>user-order</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
    <link rel="stylesheet" href="user.css">
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script>
+      $(document).ready(function(){
+         $("#state").on('input',function(){
+            
+            var state = $("#state").val();
+         
+	      $("#city option").each(function() {
+            
+            var $thisOption = $(this);
+            var valueToCompare = state;
+            
+            if($thisOption.val() == valueToCompare) {
+            
+            
+               $thisOption.attr("disabled", false);
+   
+            }else{
+            
+               $thisOption.css("display", "none");
+         
+            }
+         });
+         });
+      });
+   </script>
 </head>
 
 <body>
@@ -140,17 +167,55 @@ if(isset($_POST['order_btn'])){
             <input type="text" name="street" required placeholder="e.g. street name">
          </div>
          <div class="inputBox">
-            <span>city :</span>
-            <select name="city">
-               <option value="tirunelveli">tirunelveli</option>
-               <option value="tuticorin">tuticorin</option>
-               <option value="tiruchendhur">tiruchendhur</option>
-            </select>
-         </div>
-         <div class="inputBox">
             <span>state :</span>
-            <select name="state">
-               <option value="tamilnadu">tamilnadu</option>
+            <select name="state" id = "state" oninput = "State()">
+               
+               <?php
+               
+               $sql = "SELECT * FROM state_list ";
+               $res = mysqli_query($conn, $sql);
+               
+               while($state = mysqli_fetch_array($res,MYSQLI_ASSOC)):;
+               
+               ?>
+               
+               <option value="<?php echo $state['id'];?>" >
+               <?php echo $state['state'];?>
+               </option>
+               
+               <?php
+               
+               endwhile;
+               
+               ?>
+            
+            </select>
+
+         </div>
+
+         <div class="inputBox">
+            <span>City :</span>
+            <select name="city" id="city">
+               
+               <?php
+
+               $sq = "SELECT * FROM all_cities";
+               $res1 = mysqli_query($conn, $sq);
+               
+               while($city = mysqli_fetch_array($res1,MYSQLI_ASSOC)):;
+               
+               ?>
+               
+               <option value="<?php echo $city['state_code'];?>" disabled="disabled">
+               <?php echo $city['city_name'];?>
+               </option>
+               
+               <?php
+            
+               endwhile;
+            
+               ?>
+            
             </select>
          </div>
          <div class="inputBox">
@@ -164,7 +229,10 @@ if(isset($_POST['order_btn'])){
             <input type="number" min="0" name="pin_code" required placeholder="e.g. 123456">
          </div>
       </div>
-      <center><input type="submit" value="order now" class="btn" name="order_btn"></center>
+      <center>
+          <a href="user_cart.php" class="remove-btn" >Back</a>
+          <input type="submit" value="order now" class="btn" name="order_btn">
+       </center>
    </form>
 </section>
 <script src="js/user.js"></script>
