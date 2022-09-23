@@ -27,9 +27,37 @@ include 'add_to_cart.php';
     <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="admin_dashboard.css">
     <link rel="stylesheet" type="text/css" href="admin.css" />
+    <script src="js/user.js"></script>
+  <script>
+        document.onreadystatechange = function () {
+            
+            var state = document.readyState
+            
+            if (state == 'interactive') {
+                
+                document.getElementById('contents').style.visibility="hidden";
+            
+            }
+            
+            else if (state == 'complete') {
+                
+                setTimeout(function(){
+                    
+                    document.getElementById('interactive');
+                    document.getElementById('load').style.visibility="hidden";
+                    document.getElementById('contents').style.visibility="visible";
+                
+                },1500);
+            }
+        }
+
+    </script>
 </head>
 
-<body style="color:#fff"> 
+<body style="color:#fff">
+  
+  <div id="load">
+  <div id="contents">
 
 <?php include 'user_header.php'; ?>
 
@@ -81,8 +109,9 @@ include 'add_to_cart.php';
     
   </div>
   </section>
-<script src="js/user.js"></script>
 </body>
+</div>
+</div>
 <footer>
 <?php include 'footer.html' ; ?>
 </footer>
