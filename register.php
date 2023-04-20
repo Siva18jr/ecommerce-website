@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 include 'connection.php';
 
 if(isset($_POST['submit'])){
@@ -24,6 +25,10 @@ if(isset($_POST['submit'])){
             
             $message[] = 'confirm password not matched!';
         
+        }elseif(strlen($pass) <= 5){
+
+            $message[] = 'password is too short';
+
         }else{
             
             mysqli_query($conn, "INSERT INTO `users`(name, email, password, user_type,placed_on) VALUES('$name', '$email', '$cpass', '$user_type','$date')") or die('query failed');
@@ -32,7 +37,9 @@ if(isset($_POST['submit'])){
             header('location: login.php');
         
         }
+    
     }
+
 }
 
 ?>
@@ -63,10 +70,10 @@ if(isset($message)){
 <form action = ""  method = "POST">
     
 <div class="login-box"><center>
-    <h1>I am new!</h1>
+    <h1>I am new..!</h1>
     
     <tr>
-        <td align="right"><font size="3"><b>Log in as&nbsp;:&nbsp;</b></font></td>
+        <td align="right"><font size="3"><b>Create a &nbsp;:&nbsp;</b></font></td>
         <td>
             <select name="user_type" id="nname" style="width: 13em; height: 2em; font-size: 15px; ">
             <option value = "user">user</option>
@@ -77,7 +84,7 @@ if(isset($message)){
     </tr>
     
     <div class="textbox">
-        <i class="fas fa-user" style="font-size:18px;"></i><input type="text" placeholder="Enter your name" name="name" required/>
+        <i class="fas fa-user" style="font-size:18px;"></i><input type="text" placeholder="Enter your name" name="name" min="4" required autocomplete="off"/>
     </div>
     
     <div class="textbox">
@@ -85,7 +92,7 @@ if(isset($message)){
     </div>
     
     <div class="textbox">
-        <i class="fa fa-eye"  style="font-size:18px;"></i><input type="password" name="password" placeholder="enter your password" required/>
+        <i class="fa fa-eye"  style="font-size:18px;"></i><input type="password" name="password" min="6" placeholder="enter your password" required id="password" />
     </div>
     
     <div class="textbox">
@@ -96,11 +103,11 @@ if(isset($message)){
         <td colspan="2" align="center"><input type="submit" class="btn" name="submit" value="Create One!"></td>
     </tr><br>
     
-    <tr><h3>Already login <a href="login.php">Login!</a></center></h3></tr>
+    <tr><h3>Already a user <a href="login.php">Login!</a></center></h3></tr>
 
 </div> 
 
 </form>
-</body>
 
+</body>
 </html>
