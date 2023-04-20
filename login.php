@@ -20,18 +20,16 @@ if(isset($_POST['submit'])){
         $_SESSION['admin_name'] = $row['name'];
         $_SESSION['admin_email'] = $row['email'];
         $_SESSION['admin_id'] = $row['id'];
-        header('location:admin_dashboard.php');                     //
+        header('location:admin_dashboard.php');
     
-    }
-    elseif($row['user_type'] == 'user'){
+    }elseif($row['user_type'] == 'user'){
         
         $_SESSION['user_name'] = $row['name'];
         $_SESSION['user_email'] = $row['email'];
-        $_SESSION['user_id'] = $row['id'];
-        header('location:index.php');                           
+        $_SESSION['user_id'] = $row['id']; 
+        header('location:index.php');                      
     
-    }
-    elseif($row['user_type'] == 'agent'){
+    }elseif($row['user_type'] == 'agent'){
 
         $_SESSION['agent_name'] = $row['name'];
         $_SESSION['agent_email'] = $row['email'];
@@ -43,7 +41,9 @@ if(isset($_POST['submit'])){
         $message[] = 'incorrect email or password!';
     
     }
+
   }
+
 }
 
 ?>
@@ -85,7 +85,7 @@ if(isset($message)){
     <h2 align="center">Log in</h2><br>
     
     <div class="textbox">
-        <i class="fas fa-user fa-2x"></i><input type="email" placeholder="Enter username" name="email" required />
+        <i class="fas fa-user fa-2x"></i><input type="email" placeholder="Enter your email" name="email" required />
     </div>
     
     <div class="textbox">
@@ -102,8 +102,5 @@ if(isset($message)){
 </div>
 
 </form>
-
-<script src = "js/design.js"></script>
 </body>
-
 </html>
